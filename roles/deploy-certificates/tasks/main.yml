@@ -1,0 +1,13 @@
+---
+# tasks file for deploy-certificates
+
+- name: copy ssl contents
+  copy:
+    src: "{{ item }}"
+    dest: "{{ cert_key_directory }}"
+    owner: root
+    group: root
+    mode: 0400
+    decrypt: yes
+  with_items:
+    - "files/ssl/"

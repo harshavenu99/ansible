@@ -1,0 +1,12 @@
+---
+- hosts: masters
+  become: true
+  remote_user: deployer
+  roles:
+    - { role: deploy-certificates, tags: ['masters'] }
+
+- hosts: workers
+  become: true
+  remote_user: deployer
+  roles:
+    - { role: deploy-certificates, tags: ['workers'] }
